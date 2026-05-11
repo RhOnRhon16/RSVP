@@ -1,0 +1,317 @@
+/* =====================================================
+   RESPONSIVE OVERRIDES - Mobile & Tablet Polish
+   Loaded after style.css to override default sizes.
+   Breakpoints follow Bootstrap 4 conventions.
+   ===================================================== */
+
+/* ==========================================================
+   GLOBAL: Smooth box-sizing and prevent horizontal scroll
+   ========================================================== */
+html, body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==========================================================
+   TABLET & SMALLER (max-width: 991.98px)
+   ========================================================== */
+@media (max-width: 991.98px) {
+    /* Section vertical padding tighter */
+    .container-fluid.py-5 {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+    .container.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* Display headings smaller */
+    .display-1 {
+        font-size: 4.5rem;
+        line-height: 1.1;
+    }
+    .display-4 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+    }
+
+    /* Section title spacing */
+    .section-title h1 {
+        font-size: 2.4rem;
+    }
+    .section-title h6 {
+        font-size: 0.85rem;
+    }
+
+    /* Carousel content padding */
+    .carousel-caption .p-3 {
+        padding: 1rem !important;
+    }
+    .carousel-caption h3 {
+        font-size: 1.1rem;
+        letter-spacing: 1px !important;
+    }
+    .carousel-caption .border-top.border-bottom {
+        padding: 0.75rem 1rem !important;
+    }
+
+    /* Carousel control buttons smaller */
+    .carousel-control-prev .btn,
+    .carousel-control-next .btn {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    /* Navbar brand (mobile) */
+    .navbar-brand h1 {
+        font-size: 2rem;
+    }
+
+    /* Story timeline */
+    .timeline {
+        padding-left: 0 !important;
+    }
+
+    /* Gallery extreme padding */
+    .bg-gallery {
+        padding: 60px 0 !important;
+        margin: 40px 0 !important;
+    }
+}
+
+/* ==========================================================
+   PHONE (max-width: 767.98px)
+   ========================================================== */
+@media (max-width: 767.98px) {
+    /* Even tighter section padding */
+    .container-fluid.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    .container.py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    /* Hero heading further reduced */
+    .display-1 {
+        font-size: 3.5rem;
+    }
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    /* Section title */
+    .section-title h1 {
+        font-size: 2rem;
+    }
+    .section-title h6 {
+        font-size: 0.75rem;
+        letter-spacing: 2px !important;
+    }
+
+    /* Carousel - shorter on phones to avoid awkward landscape */
+    #header-carousel .carousel-item {
+        height: 90vh !important;
+        min-height: 500px !important;
+    }
+    .carousel-caption h3 {
+        font-size: 0.95rem;
+    }
+
+    /* About section - groom/bride cards */
+    #about .col-md-6.p-0 {
+        min-height: 320px !important;
+    }
+    #about .bg-secondary.p-5 {
+        padding: 2rem 1.5rem !important;
+    }
+    #about h3 {
+        font-size: 1.5rem;
+    }
+    #about .text-md-right {
+        text-align: center !important;
+    }
+
+    /* Story timeline alignment */
+    #story .timeline {
+        text-align: left !important;
+    }
+
+    /* Gallery padding */
+    .bg-gallery {
+        padding: 40px 0 !important;
+        margin: 30px 0 !important;
+    }
+
+    /* Wedding countdown - much smaller on phones */
+    .wedding-countdown {
+        gap: 10px !important;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+    }
+    .timer-box {
+        min-width: 60px !important;
+    }
+    .timer-box span {
+        font-size: 1.8rem !important;
+    }
+    .timer-box p {
+        font-size: 0.7rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* RSVP form - touch-friendly inputs */
+    #rsvp .form-control,
+    #rsvp select.form-control {
+        font-size: 1rem;
+        padding: 0.85rem 1rem !important;
+        height: auto !important;
+        min-height: 52px;
+    }
+    #rsvp textarea.form-control {
+        min-height: 120px;
+    }
+    #rsvp .btn {
+        width: 100%;
+        padding: 1rem !important;
+        font-size: 1rem;
+    }
+    #rsvp .form-row > [class*="col-"] {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Friends & Family - cards stack cleanly */
+    #family .col-md-6,
+    #family .col-lg-4 {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Footer */
+    #contact {
+        margin-top: 50px !important;
+    }
+    #contact .container.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* Navbar mobile brand */
+    .navbar-brand h1 {
+        font-size: 1.6rem !important;
+    }
+
+    /* Modal padding */
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+}
+
+/* ==========================================================
+   SMALL PHONE (max-width: 575.98px)
+   ========================================================== */
+@media (max-width: 575.98px) {
+    /* Even smaller hero text on tiny screens */
+    .display-1 {
+        font-size: 2.8rem;
+    }
+    .display-4 {
+        font-size: 1.7rem;
+    }
+
+    .section-title h1 {
+        font-size: 1.7rem;
+    }
+
+    /* Carousel - shorter still */
+    #header-carousel .carousel-item {
+        height: 80vh !important;
+        min-height: 450px !important;
+    }
+    .carousel-caption h3 {
+        font-size: 0.85rem;
+    }
+
+    /* Carousel arrows - hide on tiny screens or make smaller */
+    .carousel-control-prev .btn,
+    .carousel-control-next .btn {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    /* About section min-height shorter */
+    #about .col-md-6.p-0 {
+        min-height: 260px !important;
+    }
+    #about .bg-secondary.p-5 {
+        padding: 1.5rem 1rem !important;
+    }
+
+    /* Wedding countdown - 2x2 grid layout for tiny screens */
+    .wedding-countdown {
+        gap: 0.5rem !important;
+        max-width: 320px;
+        margin: 1.5rem auto !important;
+    }
+    .timer-box {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 0 !important;
+    }
+    .timer-box span {
+        font-size: 1.6rem !important;
+    }
+
+    /* RSVP form - tighter padding */
+    #rsvp {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    #rsvp .container {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    /* Section title decorative lines smaller */
+    .section-title::before,
+    .section-title::after {
+        width: 50px !important;
+    }
+}
+
+/* ==========================================================
+   LARGE TABLET / SMALL LAPTOP (768px - 991.98px)
+   ========================================================== */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Tablets - moderate adjustments only */
+    .display-1 {
+        font-size: 5rem;
+    }
+    #about .col-md-6.p-0 {
+        min-height: 380px;
+    }
+    .timer-box span {
+        font-size: 2.2rem !important;
+    }
+}
+
+/* ==========================================================
+   LANDSCAPE PHONE - prevent vertical content cramping
+   ========================================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+    #header-carousel .carousel-item {
+        height: 100vh !important;
+        min-height: 320px !important;
+    }
+    .display-1 {
+        font-size: 2.5rem;
+    }
+    .carousel-caption .border-top.border-bottom {
+        padding: 0.5rem 1rem !important;
+    }
+}
