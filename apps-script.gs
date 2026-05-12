@@ -9,8 +9,12 @@
  * to prevent character corruption during clipboard paste.
  */
 
-const RECIPIENT_EMAIL = 'francesofhelynponce@gmail.com';
-const SENDER_NAME     = 'Wedding RSVP';
+const RECIPIENTS = {
+  'frances': { email: 'francesofhelynponce@gmail.com',   signature: 'Frances' },
+  'ella':    { email: 'ellamariericamara0827@gmail.com', signature: 'Ella Marie' }
+};
+const DEFAULT_KEY = 'frances';
+const SENDER_NAME = 'Wedding RSVP';
 
 function doPost(e) {
   try {
@@ -20,6 +24,9 @@ function doPost(e) {
       return HtmlService.createHtmlOutput('<p>Thanks!</p>');
     }
 
+    const siteKey = (data._site || '').toString().trim();
+    const target  = RECIPIENTS[siteKey] || RECIPIENTS[DEFAULT_KEY];
+
     const name      = (data.Name || '').toString().trim();
     const email     = (data.Email || '').toString().trim();
     const guests    = (data['Number of Guests'] || '').toString().trim();
@@ -27,12 +34,12 @@ function doPost(e) {
     const message   = (data.Message || '').toString().trim();
 
     GmailApp.sendEmail(
-      RECIPIENT_EMAIL,
+      target.email,
       'New Wedding RSVP from ' + (name || 'a guest'),
       buildPlainTextEmail(name, email, guests, attending, message),
       {
         htmlBody: buildHtmlEmail(name, email, guests, attending, message),
-        replyTo:  email || RECIPIENT_EMAIL,
+        replyTo:  email || target.email,
         name:     SENDER_NAME
       }
     );
@@ -41,9 +48,9 @@ function doPost(e) {
       GmailApp.sendEmail(
         email,
         'Thank you for your RSVP',
-        buildPlainAutoresponse(name),
+        buildPlainAutoresponse(name, target.signature),
         {
-          htmlBody: buildHtmlAutoresponse(name),
+          htmlBody: buildHtmlAutoresponse(name, target.signature),
           name:     SENDER_NAME
         }
       );
@@ -154,7 +161,7 @@ function buildHtmlEmail(name, email, guests, attending, message) {
 
 // =================== AUTO-RESPONSE TO GUEST ===================
 
-function buildPlainAutoresponse(name) {
+function buildPlainAutoresponse(name, signature) {
   return [
     'Hi ' + (name || 'there') + ',',
     '',
@@ -166,12 +173,13 @@ function buildPlainAutoresponse(name) {
     'If anything changes on your end, just reply to this email and let us know.',
     '',
     'With love and gratitude,',
-    'Frances'
+    signature || 'Us'
   ].join('\n');
 }
 
-function buildHtmlAutoresponse(name) {
+function buildHtmlAutoresponse(name, signature) {
   const safeName = escapeHtml(name || 'Friend');
+  const safeSig  = escapeHtml(signature || 'Us');
 
   return ''
 + '<!DOCTYPE html>'
@@ -194,7 +202,7 @@ function buildHtmlAutoresponse(name) {
 
 + '<tr><td style="padding:0 40px 50px;text-align:center;border-top:1px solid #f0ead8;padding-top:30px;">'
 + '<p style="margin:0;color:#a38660;font-size:14px;font-style:italic;">With love and gratitude,</p>'
-+ '<p style="margin:8px 0 0;font-family:Georgia,serif;font-size:28px;color:#3a342c;font-style:italic;">Frances &#x1F48D;</p>'
++ '<p style="margin:8px 0 0;font-family:Georgia,serif;font-size:28px;color:#3a342c;font-style:italic;">' + safeSig + ' &#x1F48D;</p>'
 + '</td></tr>'
 
 + '</table></td></tr></table>'
