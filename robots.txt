@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /studio-vault-9c7f2a1e/
 Disallow: /mrmrs-suite-7a4e1c93/
+Disallow: /royal-chamber-f3a82b4c/
